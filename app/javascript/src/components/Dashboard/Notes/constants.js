@@ -43,7 +43,7 @@ export const NOTES_CARD_DATA = [
       "A question is a sentence that seeks an answer for information collection, tests, and research. Right questions produce accurate responses and aids in collecting actionable quantitative and qualitative data.",
     tag: "Getting Started",
     status: "Drafted",
-    createdAt: "Thursday, September 22, 2022 4:00 PM",
+    createdAt: "Wednesday, September 21, 2022 4:00 PM",
     profilePicture: "https://i.pravatar.cc/300",
   },
   {
@@ -52,7 +52,7 @@ export const NOTES_CARD_DATA = [
     description: "There is a reason why weekends exist.",
     tag: "Getting Started",
     status: "Drafted",
-    createdAt: "Thursday, September 22, 2022 4:00 PM",
+    createdAt: "Wednesday, September 21, 2022 4:00 PM",
     profilePicture: "https://i.pravatar.cc/300",
   },
 ];
