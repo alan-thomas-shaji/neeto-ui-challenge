@@ -1,4 +1,4 @@
-import { Settings, Text, UserCircle } from "neetoicons";
+import { Text, Settings, UserCircle } from "neetoicons";
 
 export const APP_NAME = "Wheel";
 
