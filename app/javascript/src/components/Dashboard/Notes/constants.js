@@ -3,12 +3,9 @@ import * as yup from "yup";
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
+  assignee: null,
+  tags: [],
 };
-
-export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
-});
 
 export const NOTES_TABLE_COLUMN_DATA = [
   {
@@ -56,3 +53,55 @@ export const NOTES_CARD_DATA = [
     profilePicture: "https://i.pravatar.cc/300",
   },
 ];
+
+export const ASSIGNEES = [
+  {
+    label: "Oliver Smith",
+    value: "oliver",
+  },
+  {
+    label: "Eve Smith",
+    value: "eve",
+  },
+  {
+    label: "Sam Smith",
+    value: "sam",
+  },
+];
+
+export const TAGS = [
+  {
+    label: "High Priority",
+    value: "high",
+  },
+  {
+    label: "Low Priority",
+    value: "low",
+  },
+  {
+    label: "Deadline soon",
+    value: "deadline",
+  },
+];
+
+export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
+  assignee: yup
+    .object({
+      label: yup.string().oneOf(ASSIGNEES.map(assignee => assignee.label)),
+      value: yup.string().oneOf(ASSIGNEES.map(assignee => assignee.value)),
+    })
+    .nullable()
+    .required("Assignee required"),
+  tags: yup
+    .array()
+    .of(
+      yup.object().shape({
+        label: yup.string().oneOf(TAGS.map(tag => tag.label)),
+        value: yup.string().oneOf(TAGS.map(tag => tag.value)),
+      })
+    )
+    .min(1, "Atleast one tag required")
+    .required("Tags required"),
+});

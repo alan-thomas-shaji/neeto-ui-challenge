@@ -10,6 +10,7 @@ import { NOTES_CARD_DATA } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import Menu from "./Menu";
 import Note from "./Note";
+import NewNotePane from "./Pane/Create";
 
 const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,6 +18,7 @@ const Notes = () => {
   const [openMenuBar, setOpenMenuBar] = useState(true);
   const [notes, setNotes] = useState(NOTES_CARD_DATA);
   const [selectedNoteId, setSelectedNoteId] = useState([]);
+  const [showNewNotePane, setShowNewNotePane] = useState(false);
 
   return (
     <>
@@ -29,7 +31,7 @@ const Notes = () => {
             <Button
               icon="ri-add-line"
               label="Add New Note"
-              onClick={() => {}}
+              onClick={() => setShowNewNotePane(true)}
             />
           }
           searchProps={{
@@ -56,6 +58,10 @@ const Notes = () => {
             title="Looks like you don't have any notes!"
           />
         )}
+        <NewNotePane
+          setShowPane={setShowNewNotePane}
+          showPane={showNewNotePane}
+        />
         {showDeleteAlert && (
           <DeleteAlert
             selectedNoteId={selectedNoteId}
