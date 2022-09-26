@@ -1,7 +1,9 @@
 import React from "react";
 
-import { MenuHorizontal } from "neetoicons";
+import { MenuVertical } from "neetoicons";
 import { Avatar, Typography, Dropdown } from "neetoui";
+
+const { Menu, MenuItem } = Dropdown;
 
 export const tableColumnData = [
   {
@@ -44,9 +46,13 @@ export const tableColumnData = [
     width: "10",
     render: () => (
       <div>
-        <Dropdown buttonStyle="text" icon={MenuHorizontal}>
-          <li> Edit </li>
-          <li onClick={() => {}}>Delete</li>
+        <Dropdown buttonStyle="text" icon={MenuVertical}>
+          <Menu>
+            <MenuItem.Button> Edit </MenuItem.Button>
+            <MenuItem.Button style="danger" onClick={() => {}}>
+              Delete
+            </MenuItem.Button>
+          </Menu>
         </Dropdown>
       </div>
     ),
