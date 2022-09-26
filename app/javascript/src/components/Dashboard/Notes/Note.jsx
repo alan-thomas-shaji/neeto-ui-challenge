@@ -5,6 +5,8 @@ import { Avatar, Dropdown, Tag, Tooltip, Typography } from "neetoui";
 
 import { formatWithShortDate, formatWithDayAndDate } from "./utils";
 
+const { Menu, MenuItem } = Dropdown;
+
 const Note = ({ note, setShowDeleteAlert, setSelectedNoteId }) => (
   <div className="mb-3 w-full  border border-gray-300 bg-white p-4 shadow-md  dark:border-gray-700 dark:bg-gray-800 ">
     <div className="flex justify-between">
@@ -12,15 +14,18 @@ const Note = ({ note, setShowDeleteAlert, setSelectedNoteId }) => (
         {note.title}
       </Typography>
       <Dropdown buttonStyle="text" icon={MenuVertical}>
-        <li> Edit </li>
-        <li
-          onClick={() => {
-            setShowDeleteAlert(true);
-            setSelectedNoteId(note.id);
-          }}
-        >
-          Delete
-        </li>
+        <Menu>
+          <MenuItem.Button> Edit </MenuItem.Button>
+          <MenuItem.Button
+            style="danger"
+            onClick={() => {
+              setShowDeleteAlert(true);
+              setSelectedNoteId(note.id);
+            }}
+          >
+            Delete
+          </MenuItem.Button>
+        </Menu>
       </Dropdown>
     </div>
     <Typography className="mb-2">{note.description}</Typography>
