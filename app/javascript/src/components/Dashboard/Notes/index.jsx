@@ -15,7 +15,7 @@ import NewNotePane from "./Pane/Create";
 const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  const [openMenuBar, setOpenMenuBar] = useState(true);
+  const [openMenuBar, setOpenMenuBar] = useState(false);
   const [notes, setNotes] = useState(NOTES_CARD_DATA);
   const [selectedNoteId, setSelectedNoteId] = useState([]);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
