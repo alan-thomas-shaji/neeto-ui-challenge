@@ -11,7 +11,7 @@ import { tableColumnData } from "./utils";
 
 const Contacts = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [openMenuBar, setOpenMenuBar] = useState(true);
+  const [openMenuBar, setOpenMenuBar] = useState(false);
   const [showContactPane, setShowContactPane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   return (
