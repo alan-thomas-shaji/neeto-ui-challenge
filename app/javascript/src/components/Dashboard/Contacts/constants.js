@@ -1,5 +1,7 @@
 import * as yup from "yup";
 
+import { buildSelectOptions } from "../utils";
+
 export const CONTACTS_FORM_INITIAL_FORM_VALUES = {
   firstName: "",
   lastName: "",
@@ -45,16 +47,7 @@ export const TABLE_ROW_DATA = [
   },
 ];
 
-export const ROLES = [
-  {
-    label: "Admin",
-    value: "admin",
-  },
-  {
-    label: "Non-Admin",
-    value: "non-admin",
-  },
-];
+export const ROLES = buildSelectOptions(["Admin", "Non Admin"]);
 
 export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
   firstName: yup.string().required("Enter First Name"),
