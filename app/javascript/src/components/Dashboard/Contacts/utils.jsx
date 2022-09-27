@@ -5,7 +5,7 @@ import { Avatar, Typography, Dropdown } from "neetoui";
 
 const { Menu, MenuItem } = Dropdown;
 
-export const tableColumnData = [
+export const tableColumnData = setShowDeleteAlert => [
   {
     title: "Name & Role",
     dataIndex: "name",
@@ -49,7 +49,12 @@ export const tableColumnData = [
         <Dropdown buttonStyle="text" icon={MenuVertical}>
           <Menu>
             <MenuItem.Button> Edit </MenuItem.Button>
-            <MenuItem.Button style="danger" onClick={() => {}}>
+            <MenuItem.Button
+              style="danger"
+              onClick={() => {
+                setShowDeleteAlert(true);
+              }}
+            >
               Delete
             </MenuItem.Button>
           </Menu>

@@ -3,7 +3,7 @@ import React from "react";
 import { Clock, MenuVertical } from "neetoicons";
 import { Avatar, Dropdown, Tag, Tooltip, Typography } from "neetoui";
 
-import { formatWithShortDate, formatWithDayAndDate } from "./utils";
+import { formatWithShortDate, formatWithDayAndDate } from "../utils";
 
 const { Menu, MenuItem } = Dropdown;
 

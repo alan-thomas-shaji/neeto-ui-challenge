@@ -2,75 +2,69 @@ import React, { useState } from "react";
 
 import { Formik, Form as FormikForm } from "formik";
 import { Check } from "neetoicons";
-import { Button, Pane } from "neetoui";
-import { Input, Textarea, Select } from "neetoui/formik";
+import { Button, Pane, Toastr } from "neetoui";
+import { Input, Select } from "neetoui/formik";
 
-import notesApi from "apis/notes";
+import {
+  CONTACTS_FORM_INITIAL_FORM_VALUES,
+  CONTACTS_FORM_VALIDATION_SCHEMA,
+  ROLES,
+} from "../constants";
 
-import { ASSIGNEES, TAGS, NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
-
-const Form = ({ onClose, note, isEdit }) => {
+const Form = ({ onClose, isEdit }) => {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async values => {
-    try {
-      if (isEdit) {
-        await notesApi.update(note.id, values);
-      } else {
-        await notesApi.create(values);
-      }
-      onClose();
-    } catch (err) {
-      logger.error(err);
-    }
+  const handleSubmit = () => {
+    Toastr.success("Contact added successfully");
+    onClose();
   };
+
   return (
     <Formik
-      initialValues={note}
+      initialValues={CONTACTS_FORM_INITIAL_FORM_VALUES}
       validateOnBlur={submitted}
       validateOnChange={submitted}
-      validationSchema={NOTES_FORM_VALIDATION_SCHEMA}
+      validationSchema={CONTACTS_FORM_VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
         <FormikForm className="w-full">
           <Pane.Body className="space-y-6">
+            <div className="flex w-full space-x-2">
+              <Input
+                required
+                className="w-1/2 flex-grow-0"
+                label="First Name"
+                name="firstName"
+                placeholder="Enter first name"
+                type="text"
+              />
+              <Input
+                required
+                className="w-1/2 flex-grow-0"
+                label="Last Name"
+                name="lastName"
+                placeholder="Enter last name"
+                type="text"
+              />
+            </div>
             <Input
               required
               className="w-full flex-grow-0"
-              label="Title"
-              name="title"
-              placeholder="Enter a title"
-            />
-            <Textarea
-              required
-              className="w-full flex-grow-0"
-              label="Description"
-              name="description"
-              placeholder="Enter note description"
-              rows={2}
+              label="Email"
+              name="email"
+              placeholder="Enter your email address"
+              type="email"
             />
             <Select
               isClearable
               isSearchable
               required
               className="w-full flex-grow-0"
-              label="Assigned Contact"
-              name="assignee"
-              options={ASSIGNEES}
-              placeholder="Select assignee"
-              size="large"
-            />
-            <Select
-              isClearable
-              isMulti
-              isSearchable
-              required
-              className="w-full flex-grow-0"
-              label="Tags"
-              name="tags"
-              options={TAGS}
-              placeholder="Select tags"
+              label="Role"
+              name="role"
+              options={ROLES}
+              placeholder="Select Role"
             />
           </Pane.Body>
           <Pane.Footer>
