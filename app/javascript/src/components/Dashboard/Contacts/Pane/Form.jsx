@@ -36,6 +36,7 @@ const Form = ({ onClose, isEdit }) => {
                 className="w-1/2 flex-grow-0"
                 label="First Name"
                 name="firstName"
+                placeholder="Enter first name"
                 type="text"
               />
               <Input
@@ -43,6 +44,7 @@ const Form = ({ onClose, isEdit }) => {
                 className="w-1/2 flex-grow-0"
                 label="Last Name"
                 name="lastName"
+                placeholder="Enter last name"
                 type="text"
               />
             </div>
@@ -51,6 +53,7 @@ const Form = ({ onClose, isEdit }) => {
               className="w-full flex-grow-0"
               label="Email"
               name="email"
+              placeholder="Enter your email address"
               type="email"
             />
             <Select
