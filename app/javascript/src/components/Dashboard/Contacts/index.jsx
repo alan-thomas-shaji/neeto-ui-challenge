@@ -11,15 +11,15 @@ import { tableColumnData } from "./utils";
 
 const Contacts = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [openMenuBar, setOpenMenuBar] = useState(false);
+  const [isMenuBarOpen, setIsMenuBarOpen] = useState(false);
   const [showContactPane, setShowContactPane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   return (
     <>
-      <Menu showMenu={openMenuBar} />
+      <Menu showMenu={isMenuBarOpen} />
       <Container>
         <Header
-          menuBarToggle={() => setOpenMenuBar(open => !open)}
+          menuBarToggle={() => setIsMenuBarOpen(open => !open)}
           title="All Contacts"
           actionBlock={
             <Button
